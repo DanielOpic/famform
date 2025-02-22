@@ -1,34 +1,57 @@
-.sitebar {
+.sitebar-container {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
+  padding-left: 10px;
   z-index: 1000;
+  width: 290px;
   overflow-y: auto;
-  width: 300px;
   background-color: #f4f4f4;
-  padding: 20px;
   border-right: 1px solid #e0e0e0;
   transition: all 0.3s;
   box-sizing: border-box;
 }
-nav {
-  ul {
-    list-style: none;
-    li {
-      a {
-        display: block;
-        padding: 10px 0;
-        color: #333;
-        text-decoration: none;
-        transition: all 0.3s;
-        font-size: 18px;
-        padding-left: 10px;
-        &:hover,
-        &.active {
-          color: #007bff;
-        }
-      }
+
+mat-toolbar {
+  padding: 10px;
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+mat-nav-list {
+  padding: 0px 0 0 20px;
+
+  a {
+    display: flex;
+    margin-top: 10px;
+    border: #cccccc 1px solid;
+    border-right: 0;
+    transition: all 0.3s;
+    border-radius: 25px 0 0 25px;
+    margin-left: 10px;
+    mat-icon {
+      font-size: 22px;
+      vertical-align: middle;
+      transition: all 0.3s;
+      color: #444;
+    }
+    span {
+      color: #666;
+      padding-left: 5px;
+      transition: all 0.8s;
+    }
+  }
+  .active {
+    margin-left: 0;
+    background-color: #16b646;
+    span {
+      color: #fff;
+      padding-left: 10px;
+      transition: all 0.8s;
+    }
+    mat-icon {
+      color: #fff;
     }
   }
 }
