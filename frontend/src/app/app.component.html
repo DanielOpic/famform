@@ -1,3 +1,11 @@
 <main class="main">
-  <div class="content">Hello Form</div>
+  <nav>
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+    </ul>
+  </nav>
+  <div class="pages-container">
+    <router-outlet></router-outlet>
+  </div>
 </main>
