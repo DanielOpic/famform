@@ -4,6 +4,12 @@ import { Component } from '@angular/core';
   standalone: false,
   selector: 'app-sitebar',
   templateUrl: './sitebar.component.html',
-  styleUrls: ['./sitebar.component.scss'],
+  styleUrl: './sitebar.component.scss',
 })
-export class SitebarComponent {}
+export class SitebarComponent {
+  isSidebarOpen = false; // Zmienna kontrolująca stan sidebaru
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+}
