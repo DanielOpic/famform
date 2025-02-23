@@ -1,5 +1,0 @@
-## Technologie użyte
-
-## Front
-
-- **Angular**

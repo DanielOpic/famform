@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: famform_backend
+    environment:
+      - NODE_ENV=production
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=Pass2DB567
+      - DATABASE_NAME=famformdb
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    networks:
+      - famform_network
+
+  db:
+    image: postgres:13
+    container_name: famformdb
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Pass2DB567
+      POSTGRES_DB: famformdb
+    ports:
+      - "5432:5432"
+    networks:
+      - famform_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  famform_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

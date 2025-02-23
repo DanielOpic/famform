@@ -9,8 +9,14 @@ FamForm to aplikacja do zarządzania formularzami rodzinnymi. Umożliwia tworzen
 ## Front
 
 - **Angular**
+- **RxJS**
+- **Angular Material**
 
 ## Backend
+
+- **Docker**
+- **NEST**
+- **TypeORM**
 
 ## Jak uruchomić aplikację
 
@@ -34,12 +40,10 @@ cd famform/frontend
 npm install
 ```
 
-4. Utwórz plik src/assets/config.json i dodaj tam klucz szyfrujący:
+4. Ustaw dane zgodnie z opisem w pliku w
 
 ```bash
-{
-  "encryptionKey": "super_tajny_klucz"
-}
+\frontend\src\environments\environment.ts
 ```
 
 5. Uruchom aplikację:
@@ -59,8 +63,38 @@ Przed wypuszczeniem na produkcję - najpierw zerknij na \frontend\src\environmen
 
 ## Back
 
-2. Przejdź do katalogu projektu:
+# Uruchamianie aplikacji z Dockerem
 
-```bash
-cd famform/backend
-```
+2. **Zainstaluj Docker**:
+
+   - Pobierz i zainstaluj [Docker Desktop](https://www.docker.com/products/docker-desktop).
+   - Po zakończeniu instalacji, uruchom Docker Desktop.
+
+3. **Uruchom kontenery**:
+
+   - Przejdź do katalogu głównego projektu (gdzie znajduje się plik `docker-compose.yml`).
+   - Otwórz terminal i uruchom polecenie:
+     ```bash
+     docker-compose up --build
+     ```
+   - To polecenie pobierze obrazy, zbuduje aplikację i uruchomi kontenery w trybie tła. Trochę to potrwa. Trochę więcej niż trochę - idź na kawę.
+
+4. **Sprawdź aplikację**:
+
+   - Otwórz przeglądarkę i przejdź na adres:
+     ```
+     http://localhost:3000
+     ```
+
+5. **Przy kolejnych uruchomieniach**:
+   - Jeśli chcesz uruchomić projekt ponownie, bez konieczności ponownego budowania kontenerów, użyj:
+     ```bash
+     docker-compose up
+     ```
+     Kontenery budujemy ponownie tylko jak zmieniamy docker-compose.yml albo backend/Docker - dobrze jest wcześniej usunać stare możesz to zrobić z poziomu GUI wDocker Desktop (famformdb i famformdb_backend)
+
+Gotowe! Aplikacja powinna działać lokalnie.
+
+**UWAGA**
+
+- Hasło i połaczenia do bazy ustawiasz w \famform\docker-compose.yml oraz w \famform\backend\src\app.module.ts - byle te same i bezpieczniejsze niz przykłądowe
