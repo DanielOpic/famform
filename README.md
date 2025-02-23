@@ -8,20 +8,19 @@ FamForm to aplikacja do zarządzania formularzami rodzinnymi. Umożliwia tworzen
 
 ## Front
 
-- **Angular** - Framework do budowania aplikacji webowych
-- **NgRx** - Zarządzanie stanem aplikacji
+- **Angular**
 
 ## Backend
 
 ## Jak uruchomić aplikację
-
-## Front
 
 1. Sklonuj repozytorium:
 
 ```bash
 git clone https://github.com/DanielOpic/famform
 ```
+
+## Front
 
 2. Przejdź do katalogu projektu:
 
@@ -35,10 +34,33 @@ cd famform/frontend
 npm install
 ```
 
-4. Uruchom aplikację:
+4. Utwórz plik src/assets/config.json i dodaj tam klucz szyfrujący:
+
+```bash
+{
+  "encryptionKey": "super_tajny_klucz"
+}
+```
+
+5. Uruchom aplikację:
 
 ```bash
 ng serve
 ```
 
-Aplikacja będzie dostępna pod adresem `http://localhost:4200/`.
+Aplikacja będzie dostępna pod adresem
+
+```bash
+http://localhost:4200
+```
+
+**UWAGA**
+Przed wypuszczeniem na produkcję - najpierw zerknij na \frontend\src\environments\environment.prod.ts i postępuj zgodnie z opisem w pliku
+
+## Back
+
+2. Przejdź do katalogu projektu:
+
+```bash
+cd famform/backend
+```

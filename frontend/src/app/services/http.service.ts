@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpParams,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { EncryptionService } from '@s/encryption.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +10,10 @@ import { environment } from '../../environments/environment';
 export class HttpService {
   private apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private encryptionService: EncryptionService
+  ) {}
 
   /**
    * Uniwersalna funkcja do obsługi zapytań HTTP
@@ -26,7 +25,14 @@ export class HttpService {
   api(method: string, endpoint: string, data?: any): Observable<any> {
     const url = `${this.apiUrl}/${endpoint}`;
 
-    // Sprawdź, czy metoda jest typu GET, POST, PUT, DELETE
+    /**
+     * Wstrzykujemy serwis szyfrujący i jeśli dane zawierają pole `password`,
+     * to szyfrujemy je przed wysłaniem na serwer
+     */
+    if (data?.password) {
+      data.password = this.encryptionService.encrypt(data.password);
+    }
+
     switch (method.toUpperCase()) {
       case 'GET':
         return this.http.get<any>(url);

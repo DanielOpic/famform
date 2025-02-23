@@ -20,7 +20,8 @@
     "baseUrl": "./",
     "paths": {
       "@p*": ["src/app/pages/*"],
-      "@s*": ["src/app/services/*"]
+      "@s*": ["src/app/services/*"],
+      "@e*": ["src/environments*"]
     }
   },
   "angularCompilerOptions": {
