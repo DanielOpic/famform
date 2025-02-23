@@ -33,6 +33,18 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+  frontend:
+    build:
+      context: ./frontend
+    container_name: famform_frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+    networks:
+      - famform_network
+    command: "ng serve --host 0.0.0.0"
+
 networks:
   famform_network:
     driver: bridge

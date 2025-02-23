@@ -6,6 +6,8 @@ FamForm to aplikacja do zarządzania formularzami rodzinnymi. Umożliwia tworzen
 
 ## Technologie użyte
 
+- **Docker**
+
 ## Front
 
 - **Angular**
@@ -14,9 +16,12 @@ FamForm to aplikacja do zarządzania formularzami rodzinnymi. Umożliwia tworzen
 
 ## Backend
 
-- **Docker**
 - **NEST**
 - **TypeORM**
+
+## DB
+
+- **Postgre**
 
 ## Jak uruchomić aplikację
 
@@ -26,46 +31,7 @@ FamForm to aplikacja do zarządzania formularzami rodzinnymi. Umożliwia tworzen
 git clone https://github.com/DanielOpic/famform
 ```
 
-## Front
-
-2. Przejdź do katalogu projektu:
-
-```bash
-cd famform/frontend
-```
-
-3. Zainstaluj zależności:
-
-```bash
-npm install
-```
-
-4. Ustaw dane zgodnie z opisem w pliku w
-
-```bash
-\frontend\src\environments\environment.ts
-```
-
-5. Uruchom aplikację:
-
-```bash
-ng serve
-```
-
-Aplikacja będzie dostępna pod adresem
-
-```bash
-http://localhost:4200
-```
-
-**UWAGA**
-Przed wypuszczeniem na produkcję - najpierw zerknij na \frontend\src\environments\environment.prod.ts i postępuj zgodnie z opisem w pliku
-
-## Back
-
-# Uruchamianie aplikacji z Dockerem
-
-2. **Zainstaluj Docker**:
+2. **Zainstaluj Docker - jak masz to pomiń krok**:
 
    - Pobierz i zainstaluj [Docker Desktop](https://www.docker.com/products/docker-desktop).
    - Po zakończeniu instalacji, uruchom Docker Desktop.
@@ -82,8 +48,15 @@ Przed wypuszczeniem na produkcję - najpierw zerknij na \frontend\src\environmen
 4. **Sprawdź aplikację**:
 
    - Otwórz przeglądarkę i przejdź na adres:
+
      ```
-     http://localhost:3000
+     http://localhost:3000 - back
+     ```
+
+     oraz
+
+     ```bash
+     http://localhost:4200 - front
      ```
 
 5. **Przy kolejnych uruchomieniach**:
@@ -91,10 +64,30 @@ Przed wypuszczeniem na produkcję - najpierw zerknij na \frontend\src\environmen
      ```bash
      docker-compose up
      ```
-     Kontenery budujemy ponownie tylko jak zmieniamy docker-compose.yml albo backend/Docker - dobrze jest wcześniej usunać stare możesz to zrobić z poziomu GUI wDocker Desktop (famformdb i famformdb_backend)
+     Kontenery budujemy ponownie tylko jak zmieniamy docker-compose.yml albo backend/Docker - dobrze jest wcześniej usunać stare możesz to zrobić z poziomu GUI wDocker Desktop (famformdb i famformdb_backend i famformdb_frontend)
 
 Gotowe! Aplikacja powinna działać lokalnie.
 
 **UWAGA**
+Przed wypuszczeniem na produkcję
 
-- Hasło i połaczenia do bazy ustawiasz w \famform\docker-compose.yml oraz w \famform\backend\src\app.module.ts - byle te same i bezpieczniejsze niz przykłądowe
+- najpierw zerknij na
+
+  ```bash
+  \frontend\src\environments\environment.prod.ts
+  ```
+
+  i postępuj zgodnie z opisem w pliku
+
+- hasło i połaczenia do bazy ustawiasz w
+  ```bash
+  \famform\backend\src\app.module.ts
+  ```
+
+i lokalnie musi się zgadzać z
+
+```bash
+\famform\docker-compose.yml
+```
+
+byle na produkcji je zmienić na bezpieczne

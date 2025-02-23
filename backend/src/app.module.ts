@@ -2,9 +2,12 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { TestModule } from './test/test.module';
 
 @Module({
+  controllers: [AppController],
   imports: [
+    TestModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'db', // Użyj nazwy usługi z pliku docker-compose.yml, np. db
@@ -16,7 +19,6 @@ import { AppService } from './app.service';
       synchronize: true,
     }),
   ],
-  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

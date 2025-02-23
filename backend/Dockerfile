@@ -1,5 +1,5 @@
 # Wybieramy oficjalny obraz Node.js
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Tworzymy katalog roboczy w kontenerze
 WORKDIR /usr/src/app
