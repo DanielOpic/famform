@@ -20,4 +20,8 @@ RUN npm run build
 EXPOSE 3000
 
 # Komenda do uruchomienia aplikacji
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "start:dev"]
+
+LABEL maintainer="Daniel Opic <danielopic@gmail.com>"
+LABEL version="1.0"
+LABEL description="Aplikacja famform - frontend"

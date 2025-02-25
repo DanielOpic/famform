@@ -1,4 +1,4 @@
-# FamForm Frontend
+# FamForm Frontend - Work in Progress
 
 ## Opis aplikacji
 
@@ -38,33 +38,48 @@ git clone https://github.com/DanielOpic/famform
 
 3. **Uruchom kontenery**:
 
-   - Przejdź do katalogu głównego projektu (gdzie znajduje się plik `docker-compose.yml`).
-   - Otwórz terminal i uruchom polecenie:
-     ```bash
-     docker-compose up --build
-     ```
-   - To polecenie pobierze obrazy, zbuduje aplikację i uruchomi kontenery w trybie tła. Trochę to potrwa. Trochę więcej niż trochę - idź na kawę.
+## DB & Backend
+
+- Przejdź do katalogu głównego projektu (gdzie znajduje się plik `docker-compose.yml`).
+- Otwórz terminal i uruchom polecenie:
+  ```bash
+  docker-compose up --build
+  ```
+- To polecenie pobierze obrazy, zbuduje aplikację i uruchomi kontenery w trybie tła. Trochę to potrwa. Trochę więcej niż trochę - idź na kawę.
+
+## Frontend
+
+Uruchom server w trybie dev
+`    cd .\frontend\
+     npm install
+     ng serve
+   `
 
 4. **Sprawdź aplikację**:
 
    - Otwórz przeglądarkę i przejdź na adres:
 
-     ```
-     http://localhost:3000 - back
-     ```
-
-     oraz
-
      ```bash
      http://localhost:4200 - front
      ```
 
+     oraz
+
+     ```
+     http://localhost:3000 - back
+     ```
+
 5. **Przy kolejnych uruchomieniach**:
+
    - Jeśli chcesz uruchomić projekt ponownie, bez konieczności ponownego budowania kontenerów, użyj:
+
      ```bash
      docker-compose up
      ```
-     Kontenery budujemy ponownie tylko jak zmieniamy docker-compose.yml albo backend/Docker - dobrze jest wcześniej usunać stare możesz to zrobić z poziomu GUI wDocker Desktop (famformdb i famformdb_backend i famformdb_frontend)
+
+     front odpalamy jak wyżej.
+
+     Kontenery budujemy ponownie tylko jak zmieniamy docker-compose.yml albo backend/Docker
 
 Gotowe! Aplikacja powinna działać lokalnie.
 
@@ -90,4 +105,4 @@ i lokalnie musi się zgadzać z
 \famform\docker-compose.yml
 ```
 
-byle na produkcji je zmienić na bezpieczne
+byle na produkcji je zmienić na bezpieczne.

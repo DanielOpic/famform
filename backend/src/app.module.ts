@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TestModule } from './test/test.module';
+import { AuthModule } from './api/auth/auth.module';
 
 @Module({
   controllers: [AppController],
   imports: [
-    TestModule,
+    AuthModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'db', // Użyj nazwy usługi z pliku docker-compose.yml, np. db

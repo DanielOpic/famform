@@ -4,6 +4,8 @@ services:
   backend:
     build:
       context: ./backend
+    volumes:
+      - ./backend:/app
     container_name: famform_backend
     environment:
       - NODE_ENV=production
@@ -18,6 +20,7 @@ services:
       - db
     networks:
       - famform_network
+    command: "npm run start:dev"
 
   db:
     image: postgres:13
@@ -32,18 +35,6 @@ services:
       - famform_network
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
-  frontend:
-    build:
-      context: ./frontend
-    container_name: famform_frontend
-    ports:
-      - "4200:4200"
-    depends_on:
-      - backend
-    networks:
-      - famform_network
-    command: "ng serve --host 0.0.0.0"
 
 networks:
   famform_network:
